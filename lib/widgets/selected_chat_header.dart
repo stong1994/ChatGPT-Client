@@ -16,7 +16,7 @@ class SelectedChatHeader extends StatelessWidget {
         children: [
           Text('${appLocals.model}: '),
           const Text(
-            'gpt-3.5-turbo-0301',
+            'gpt-3.5-turbo',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
