@@ -28,18 +28,22 @@ class ApiClient implements ApiService {
   Future<Stream<String>?> sendMessages(Chat chat) async {
     try {
       final httpClient = HttpClient();
+      httpClient.findProxy = (uri) {
+        return "PROXY 127.0.0.1:7890";
+      };
       final request = await httpClient
           .postUrl(Uri.parse('https://api.openai.com/v1/chat/completions'));
       request.headers.set('content-type', 'application/json;charset=UTF-8');
       request.headers
           .set('Authorization', 'Bearer ${LocalData.instance.apiKey}');
+
       final messages = chat.contextMessagesJson();
       request.add(
         utf8.encode(
           json.encode(
             {
               'stream': true,
-              "model": "gpt-3.5-turbo-0301",
+              "model": "gpt-3.5-turbo",
               "messages": messages,
             },
           ),
