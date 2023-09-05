@@ -9,7 +9,7 @@ class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key});
 
   void _openGithubRepo() async {
-    final uri = Uri.parse('https://github.com/dariowskii/open_gpt_client');
+    final uri = Uri.parse('https://github.com/stong1994/ChatGPT-Client');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
@@ -28,7 +28,7 @@ class InfoScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Open GPT Client',
+                'ChatGPT Client',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -37,16 +37,19 @@ class InfoScreen extends StatelessWidget {
               const SizedBox(height: 16),
               const Text.rich(
                 TextSpan(
-                  text: 'Open GPT Client è un software ',
+                  text: 'ChatGPT Client 是一款 ',
                   children: [
                     TextSpan(
-                      text: 'open source',
+                      text: '开源',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: ' che ti permette di interagire con le API di OpenAI (in particolare con ',
+                      text: ' 软件 ',
+                    ),
+                    TextSpan(
+                      text: ' 它允许你与OpenAI的API进行交互（特别是GPT API ',
                     ),
                     TextSpan(
                       text: 'ChatGPT 3.5',
@@ -55,10 +58,10 @@ class InfoScreen extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: ') in maniera semplice e gratuita ',
+                      text: ') 以简单且免费的方式进行交互 ',
                     ),
                     TextSpan(
-                      text: 'senza raccogliere dati personali.',
+                      text: '不收集个人数据.',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -70,7 +73,7 @@ class InfoScreen extends StatelessWidget {
               const SizedBox(height: 16),
               const Text.rich(
                 TextSpan(
-                  text: 'Tutti i dati salvati in locale sono criptati con algoritmo ',
+                  text: '所有本地保存的数据都使用算法进行加密 ',
                   children: [
                     TextSpan(
                       text: 'AES-256',
@@ -79,7 +82,7 @@ class InfoScreen extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: ' e non vengono mai inviati a server remoti.',
+                      text: ' 而且这些数据不会被发送到远程服务器.',
                     ),
                   ],
                 ),
@@ -88,7 +91,7 @@ class InfoScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Text.rich(
                 TextSpan(
-                  text: 'Il codice sorgente è disponibile su ',
+                  text: '源代码可在以下位置找到 ',
                   children: [
                     TextSpan(
                       text: 'GitHub',
@@ -96,22 +99,23 @@ class InfoScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.underline,
                       ),
-                      recognizer: TapGestureRecognizer()..onTap = _openGithubRepo,
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = _openGithubRepo,
                     ),
                     const TextSpan(
-                      text: ' e puoi contribuire al progetto ',
+                      text: ' \n源代码是可用的 ',
                     ),
                     const TextSpan(
-                      text: 'apportando modifiche',
+                      text: '可以进行修改',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const TextSpan(
-                      text: ' o ',
+                      text: ' 或者 ',
                     ),
                     const TextSpan(
-                      text: 'segnalando bug',
+                      text: '报告错误',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -124,15 +128,15 @@ class InfoScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
-              const Text(
-                'Supporta il progetto',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              // const Text(
+              //   'Supporta il progetto',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
               const SizedBox(height: 16),
-              const SupportMeCard(),
+              // const SupportMeCard(),
               const SizedBox(height: 16),
               const Text('version: ${Constants.appVersion}')
             ],

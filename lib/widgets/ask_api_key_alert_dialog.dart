@@ -22,16 +22,16 @@ class _AskAPIKeyAlertDialogState extends State<AskAPIKeyAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Imposta chiave API'),
+      title: const Text('请设置API密钥'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Per poter utilizzare il servizio è necessario inserire una chiave API di OpenAI valida.',
+            '为了使用该服务，您需要提供有效的OpenAI API密钥',
           ),
           const Text(
-            'Se non ne hai una, puoi richiederla qui:',
+            '如果您没有API密钥，您可以在这里申请：',
           ),
           MouseRegion(
             cursor: SystemMouseCursors.click,
@@ -56,7 +56,7 @@ class _AskAPIKeyAlertDialogState extends State<AskAPIKeyAlertDialog> {
             controller: controller,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
-              labelText: 'Chiave API',
+              labelText: 'API密钥',
             ),
           ),
         ],

@@ -18,13 +18,13 @@ class VersionNewsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Novità della versione - ${Constants.appVersion}'),
+      title: const Text('版本新功能 - ${Constants.appVersion}'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            '• Genera le immagini utilizzando DALL•E! 🤖',
+            '• 使用DALL•E生成图像！ 🤖',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
@@ -33,7 +33,7 @@ class VersionNewsDialog extends StatelessWidget {
           const SizedBox(height: 8),
           const Text.rich(
             TextSpan(
-              text: '   Vai nelle ',
+              text: '   选择 ',
               children: [
                 WidgetSpan(
                   child: Icon(
@@ -42,7 +42,7 @@ class VersionNewsDialog extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: ' Impostazioni ',
+                  text: ' 设置 ',
                 ),
                 WidgetSpan(
                   child: Icon(
@@ -51,8 +51,7 @@ class VersionNewsDialog extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text:
-                      ' Generazione Immagini (DALL•E) per impostare la grandezza\n   delle immagini generate (e di conseguenza il costo).',
+                  text: ' 生成图像 (DALL•E) 用于设置生成图像的大小（以及相应的成本）',
                 ),
               ],
             ),
@@ -60,8 +59,7 @@ class VersionNewsDialog extends StatelessWidget {
           const SizedBox(height: 16),
           Text.rich(
             TextSpan(
-              text:
-                  '• Risolto un bug nella generazione della password in fase iniziale (',
+              text: '• 在初始阶段修复了密码生成中的一个错误。 (',
               style: const TextStyle(
                 fontSize: 16,
               ),
@@ -94,7 +92,7 @@ class VersionNewsDialog extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           const Text(
-            '• Miglioramento delle prestazioni.',
+            '• 性能改进.',
             style: TextStyle(
               fontSize: 16,
             ),
@@ -106,7 +104,7 @@ class VersionNewsDialog extends StatelessWidget {
           onPressed: () {
             context.pop();
           },
-          child: const Text('Chiudi'),
+          child: const Text('好的，关闭'),
         ),
       ],
     );

@@ -1,75 +1,75 @@
 {
-    "settings": "Impostazioni",
-    "about": "Informazioni",
-    "send": "Invia",
-    "start": "Inizia",
-    "forward": "Avanti",
-    "save": "Salva",
-    "confirm": "Conferma",
-    "cancel": "Annulla",
-    "back": "Indietro",
-    "delete": "Cancella",
-    "model": "Modello",
-    "modifyChatTitle": "Modifica titolo",
-    "newTitle": "Nuovo titolo",
-    "deleteChatTitle": "Cancella chat",
-    "deleteChatQuestion": "Sei sicuro di voler cancellare questa chat?",
-    "dasboardFieldInput": "Chiedimi qualsiasi cosa!",
-    "copy": "Copia",
-    "copiedToClipboard": "Copiato negli appunti!",
-    "resetApp": "Resetta applicazione",
-    "resetAppConfirmation": "Sei sicuro di voler resettare i dati dell'applicazione?\nL'azione sarà irreversibile.",
-    "passwordCannotBeEmpty": "La password non può essere vuota!",
-    "errorPasswordLenght": "La password deve essere di 16, 24 o 32 caratteri!",
-    "wrongPassword": "Password errata! Riprova.",
-    "pleaseConfirmPassword": "Devi confermare la password",
-    "confirmPassword": "Conferma Password",
-    "passwordDoesntMatchError": "Le password non coincidono!",
-    "setupPasswordHeadline": "Crea una password robusta\nper codificare i dati salvati dall'applicazione.\n\nTi consigliamo vivamente di generare una password\ncasuale per aumentare il livello di sicurezza.",
-    "saveYourPasswordTitle": "Salva la password!",
-    "saveYourPasswordText": "Salva la password in un luogo sicuro.\nSe la perderai non sarai più in grado di riaccedere all'applicazione e sarai costretto a resettare i dati.",
-    "generatePassword": "Genera Password",
-    "insertPasswordHint": "Inserisci la password per sbloccare l'applicazione.",
+    "settings": "设置",
+    "about": "关于",
+    "send": "发送",
+    "start": "开始",
+    "forward": "前进",
+    "save": "保存",
+    "confirm": "确认",
+    "cancel": "取消",
+    "back": "返回",
+    "delete": "删除",
+    "model": "模型",
+    "modifyChatTitle": "修改标题",
+    "newTitle": "新标题",
+    "deleteChatTitle": "删除聊天",
+    "deleteChatQuestion": "您确定要删除此聊天吗？",
+    "dasboardFieldInput": "请问有什么可以帮助您的？",
+    "copy": "复制",
+    "copiedToClipboard": "已复制到剪贴板！",
+    "resetApp": "重置应用",
+    "resetAppConfirmation": "您确定要重置应用数据吗？\n此操作不可逆。",
+    "passwordCannotBeEmpty": "密码不能为空！",
+    "errorPasswordLenght": "密码长度必须为16、24或32个字符！",
+    "wrongPassword": "密码错误！请重试。",
+    "pleaseConfirmPassword": "请确认密码",
+    "confirmPassword": "确认密码",
+    "passwordDoesntMatchError": "密码不匹配！",
+    "setupPasswordHeadline": "为保存应用程序的数据创建一个强密码。\n\n我们强烈建议您生成一个随机密码以提高安全性。",
+    "saveYourPasswordTitle": "保存密码！",
+    "saveYourPasswordText": "将密码保存在安全的地方。\n如果您丢失密码，您将无法再次访问应用程序，必须重置数据。",
+    "generatePassword": "生成密码",
+    "insertPasswordHint": "输入密码以解锁应用程序。",
     "@insertPasswordHint": {
-        "description": "Frase di suggerimento per la WelcomeLockScreen"
+        "description": "欢迎锁屏的提示文本"
     },
-    "unlock": "Sblocca",
+    "unlock": "解锁",
     "@unlock": {
-        "description": "Bottone di ingresso all'app"
+        "description": "进入应用程序的按钮"
     },
     "@dasboardFieldInput": {
-        "description": "Placeholder per l'input della dashboard"
+        "description": "仪表板输入框的占位符"
     },
-    "yourChats": "Le tue chat",
+    "yourChats": "您的聊天",
     "@yourChats": {
-        "description": "Titolo della sidebar home"
+        "description": "侧边栏首页的标题"
     },
-    "addChat": "Aggiungi chat",
+    "addChat": "添加聊天",
     "@addChat": {
-        "description": "Testo botton aggiungi nella sidebar home"
+        "description": "侧边栏首页的添加按钮文本"
     },
-    "noChatTitle": "Nessun titolo",
+    "noChatTitle": "无标题",
     "@noChatTitle": {
-        "description": "Titolo di default di una nuova chat"
+        "description": "新聊天的默认标题"
     },
-    "noMessages": "Nessun messaggio.\nInizia una conversazione!",
+    "noMessages": "没有消息。\n开始一场对话吧！",
     "@noMessages": {
-        "description": "Feedback della chat vuota"
+        "description": "空聊天的反馈"
     },
-    "sentFromYou": "Inviato da te",
+    "sentFromYou": "您发送的",
     "@sentFromYou": {
-        "description": "Titolo da mostrare nella card ChatMessageUI in caso di invio dall'utente"
+        "description": "在用户发送时在ChatMessageUI卡片中显示的标题"
     },
-    "responseFromAI": "Risposta AI",
+    "responseFromAI": "AI的回复",
     "@responseFromAI": {
-        "description": "Titolo da mostrare nella card ChatMessageUI in caso di risposta della AI"
+        "description": "在AI回复时在ChatMessageUI卡片中显示的标题"
     },
-    "messagesInContext": "Messaggi nel contesto",
+    "messagesInContext": "上下文中的消息",
     "@messagesInContext": {
-        "description": "Informativa su quanti messaggi sono caricati nel contesto della chat selezionata"
+        "description": "显示加载到所选聊天的上下文中的消息数量的信息"
     },
-    "inTheContext": "Nel contesto",
+    "inTheContext": "在上下文中",
     "@inTheContext": {
-        "description": "Flag utilizzato nella ChatMessageUI per indicare se un messaggio è inserito nel contesto"
+        "description": "在ChatMessageUI中用于指示消息是否插入上下文的标志"
     }
 }

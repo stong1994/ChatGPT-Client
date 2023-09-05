@@ -134,7 +134,7 @@ class _Page1 extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Questo software è open source, visionabile e\npuoi contribuire al suo sviluppo su GitHub.',
+          '这个软件是开源的，可以在 GitHub 上查看并对其开发做出贡献。',
           textAlign: TextAlign.center,
         ),
         const Spacer(),
@@ -158,7 +158,7 @@ class _Page2 extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         const Text(
-          'Sicuro',
+          'Secure',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -167,23 +167,22 @@ class _Page2 extends StatelessWidget {
         const SizedBox(height: 16),
         const Text.rich(
           TextSpan(
-            text: 'Tutti i dati vengono salvati\nin modo sicuro ',
+            text: '所有数据都以安全的方式保存。',
             children: [
               TextSpan(
-                text: 'solo sul tuo dispositivo',
+                text: '\n仅在您的设备上保存',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextSpan(text: ', con algoritmo '),
+              TextSpan(text: ', 使用算法 '),
               TextSpan(
-                text: 'AES-256.',
+                text: 'AES-256。',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextSpan(
-                  text: '\nI dati non vengono mai inviati a server remoti.'),
+              TextSpan(text: '\n数据永远不会被发送到远程服务器。'),
             ],
           ),
           textAlign: TextAlign.center,
@@ -209,7 +208,7 @@ class _Page3 extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         const Text(
-          'Economico',
+          'economical',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -217,7 +216,7 @@ class _Page3 extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Il software è completamente gratuito e non richiede alcun abbonamento.\nUtilizzando le API di OpenAI pagherai solo per ciò che effettivamente consumi!',
+          '该软件是完全免费的，不需要任何订阅费用。\n使用OpenAI的API，您只需要支付实际使用的费用！',
           textAlign: TextAlign.center,
         ),
         const Spacer(),

@@ -126,7 +126,7 @@ class _SelectedChatActionFieldState extends State<SelectedChatActionField> {
               Row(
                 children: [
                   Tooltip(
-                    message: 'Genera un\'immagine dal testo inserito',
+                    message: '生成插入的文本的图像',
                     child: MaterialButton(
                       color: Theme.of(context).colorScheme.onBackground,
                       textColor: Theme.of(context).colorScheme.background,
@@ -156,7 +156,7 @@ class _SelectedChatActionFieldState extends State<SelectedChatActionField> {
                           children: const [
                             Icon(Icons.lens_blur),
                             SizedBox(width: 4),
-                            Text('Genera immagine'),
+                            Text('生成图像'),
                           ],
                         ),
                       ),

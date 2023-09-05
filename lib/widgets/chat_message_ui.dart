@@ -65,7 +65,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
     if (!mounted) {
       return;
     }
-    context.showSnackBar('Immagine salvata!');
+    context.showSnackBar('图片已保存!');
   }
 
   void attachStream(Stream<String> stream) {
@@ -109,7 +109,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
       widget.message.isLoadingResponse = false;
       widget.message.wasInError = true;
       widget.message.content =
-          'Errore nel recuperare la risposta.\n\nCause possibili:\n- Connessione internet assente\n- Chiave API (OpenAI) errata\n- Non hai ancora configurato il piano a pagamento di OpenAI\n- Le API di OpenAI sono momentaneamente offline\n\nRiprova più tardi.';
+          '获取响应错误。\n\n可能原因：\n- 没有网络连接\n- 错误的API密钥（OpenAI）\n- 您还没有设置OpenAI付费计划\n- OpenAI的API目前处于离线状态\n\n请稍后重试。';
       LocalData.instance.saveChat(context.appState.value.selectedChat!);
     });
   }
@@ -186,7 +186,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
                           ),
                           SizedBox(width: 10),
                           Text(
-                            'Immagine generata',
+                            '图片生成',
                             style: TextStyle(
                               fontSize: 10,
                             ),
@@ -214,7 +214,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
                       ),
                     ] else ...[
                       IconButton(
-                        tooltip: 'Salva immagine',
+                        tooltip: '保存图片',
                         onPressed: _saveImage,
                         icon: const Icon(
                           Icons.download,
@@ -305,7 +305,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
             if (widget.message.imageMessage?.imageBytes != null) ...[
               _ChatMessageImageBody(message: widget.message.imageMessage!),
             ] else ...[
-              const _CustomMarkDown(content: 'Immagine non disponibile'),
+              const _CustomMarkDown(content: '图片无法使用'),
             ]
           ]
         ],
@@ -360,7 +360,7 @@ class _ChatMessageImageBody extends StatelessWidget {
             ),
             Text.rich(
               TextSpan(
-                text: 'Dimensione: ',
+                text: '尺寸: ',
                 children: [
                   TextSpan(
                     text: message.size.apiSize,
@@ -373,7 +373,7 @@ class _ChatMessageImageBody extends StatelessWidget {
             ),
             Text.rich(
               TextSpan(
-                text: 'Peso: ',
+                text: '权重: ',
                 children: [
                   TextSpan(
                     text: message.imageSize,
@@ -386,7 +386,7 @@ class _ChatMessageImageBody extends StatelessWidget {
             ),
             const Text.rich(
               TextSpan(
-                text: 'Formato: ',
+                text: '格式: ',
                 children: [
                   TextSpan(
                     text: 'PNG',
@@ -402,7 +402,7 @@ class _ChatMessageImageBody extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text('Costo: '),
+                const Text('成本: '),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(vertical: 2, horizontal: 4),

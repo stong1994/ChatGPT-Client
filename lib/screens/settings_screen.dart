@@ -21,12 +21,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
           text: apiKey,
         );
         return AlertDialog(
-          title: const Text('Modifica chiave API'),
+          title: const Text('修改API密钥'),
           content: TextField(
             controller: textController,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
-              labelText: 'Chiave API',
+              labelText: 'API密钥',
             ),
           ),
           actions: [
@@ -34,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 context.pop();
               },
-              child: const Text('Annulla'),
+              child: const Text('取消'),
             ),
             TextButton(
               onPressed: () async {
@@ -51,12 +51,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                 context.pop();
                 context.showSnackBar(
-                  'Chiave API modificata!',
+                  'API密钥已修改!',
                 );
                 setState(() {});
               },
               child: const Text(
-                'Salva',
+                '保存',
                 style: TextStyle(
                   color: Colors.white,
                 ),
@@ -72,7 +72,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Impostazioni'),
+        title: const Text('设置'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -101,7 +101,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Chiave API (OpenAI)',
+                              'API秘钥 (OpenAI)',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -113,19 +113,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Row(
                           children: [
                             IconButton(
-                              tooltip: 'Copia',
+                              tooltip: '复制',
                               icon: const Icon(Icons.copy),
                               onPressed: () {
                                 Clipboard.setData(
                                   ClipboardData(text: apiKey),
                                 );
                                 context.showSnackBar(
-                                  'Chiave API copiata negli appunti',
+                                  'API密钥已复制到剪贴板',
                                 );
                               },
                             ),
                             IconButton(
-                              tooltip: 'Modifica',
+                              tooltip: '修改',
                               icon: const Icon(Icons.edit),
                               onPressed: () => _showApiKeyDialog(apiKey),
                             ),
@@ -147,7 +147,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Generazione Immagini (DALL•E)',
+                          '生成图片 (DALL•E)',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -155,12 +155,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         const SizedBox(height: 12),
                         const Text(
-                          'Genera immagini a partire da una descrizione utilizzando i servizi di DALL•E.',
+                          '使用DALL•E服务根据描述生成图像',
                         ),
                         const SizedBox(height: 12),
                         Row(
                           children: [
-                            const Text('Dimensione immagine: '),
+                            const Text('图片尺寸: '),
                             DropdownButton<DallEImageSize>(
                               value: context
                                   .appState.value.settings.dallEImageSize,

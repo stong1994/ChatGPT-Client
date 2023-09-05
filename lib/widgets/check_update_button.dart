@@ -20,7 +20,7 @@ class CheckUpdateButton extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         child: Text(
-          'Aggiornamento disponibile!',
+          '有可用更新 !',
           style: TextStyle(
             color: Theme.of(context).colorScheme.onSecondary,
           ),

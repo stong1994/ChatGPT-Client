@@ -189,7 +189,7 @@ class _WelcomeLockScreenState extends State<WelcomeLockScreen> {
                       child: CircularProgressIndicator(),
                     ),
                     SizedBox(width: 16),
-                    Text('Sto decriptando...'),
+                    Text('正在解密...'),
                   ],
                 )
               ]

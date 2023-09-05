@@ -41,7 +41,7 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
             children: const [
               CircularProgressIndicator(),
               SizedBox(width: 16),
-              Text('Sto inizializzando...'),
+              Text('初始化中...'),
             ],
           ),
         );
