@@ -229,6 +229,8 @@ class Chat {
   /// The [title] property defines the title of the chat.
   String title;
 
+  String systemPrompt;
+
   /// The [messages] property defines the messages of the chat.
   final List<ChatMessage> messages;
 
@@ -238,6 +240,7 @@ class Chat {
   Chat({
     required this.id,
     required this.title,
+    required this.systemPrompt,
     required this.messages,
     required this.contextMessages,
   });
@@ -246,6 +249,7 @@ class Chat {
     return Chat(
       id: json['id'] as String,
       title: json['title'] as String,
+      systemPrompt: json['systemPrompt'] as String,
       messages: (json['messages'] as List<dynamic>)
           .map((message) => ChatMessage.fromJson(message))
           .toList(),
@@ -257,12 +261,20 @@ class Chat {
 
   @override
   String toString() {
-    return 'Chat(id: $id, title: $title, messages: $messages)';
+    return 'Chat(id: $id, title: $title, system_prompt: $systemPrompt, messages: $messages)';
   }
 
   /// The [contextMessagesJson] method returns the JSON representation of the messages that can be sent to the OpenAI API.
   List<Map<String, dynamic>> contextMessagesJson() {
-    return contextMessages.map((e) => e.toContextMessageJson()).toList();
+    List<Map<String, dynamic>> rst =
+        contextMessages.map((e) => e.toContextMessageJson()).toList();
+    if (systemPrompt.isNotEmpty) {
+      rst.insert(0, {
+        'role': MessageSenderRole.system.value,
+        'content': systemPrompt,
+      });
+    }
+    return rst;
   }
 
   /// The [toJson] method returns the JSON representation of the chat that can be saved in the local storage.
@@ -270,6 +282,7 @@ class Chat {
     return {
       'id': id,
       'title': title,
+      'systemPrompt': systemPrompt,
       'messages': messages.map((e) => e.toJson()).toList(),
       'contextMessages': contextMessages.map((e) => e.toJson()).toList(),
     };
@@ -286,12 +299,14 @@ class Chat {
   Chat copyWith({
     String? id,
     String? title,
+    String? systemPrompt,
     List<ChatMessage>? messages,
     List<ChatMessage>? contextMessages,
   }) {
     return Chat(
       id: id ?? this.id,
       title: title ?? this.title,
+      systemPrompt: systemPrompt ?? this.systemPrompt,
       messages: messages ?? this.messages,
       contextMessages: contextMessages ?? this.contextMessages,
     );
@@ -305,12 +320,13 @@ class Chat {
         other.runtimeType == runtimeType &&
         other.id == id &&
         other.title == title &&
+        other.systemPrompt == systemPrompt &&
         listEquals(other.messages, messages) &&
         listEquals(other.contextMessages, contextMessages);
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, title, messages, contextMessages);
+    return Object.hash(id, title, systemPrompt, messages, contextMessages);
   }
 }

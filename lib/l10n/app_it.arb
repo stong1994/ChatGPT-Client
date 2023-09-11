@@ -12,6 +12,7 @@
     "model": "模型",
     "modifyChatTitle": "修改标题",
     "newTitle": "新标题",
+    "newSystemPrompt": "新系统提示",
     "deleteChatTitle": "删除聊天",
     "deleteChatQuestion": "您确定要删除此聊天吗？",
     "dasboardFieldInput": "请问有什么可以帮助您的？",
@@ -51,6 +52,10 @@
     "noChatTitle": "无标题",
     "@noChatTitle": {
         "description": "新聊天的默认标题"
+    },
+    "noSystemPrompt": "无系统提示",
+    "@noSystemPrompt": {
+        "description": "新聊天的系统提示"
     },
     "noMessages": "没有消息。\n开始一场对话吧！",
     "@noMessages": {

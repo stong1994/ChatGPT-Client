@@ -15,22 +15,37 @@ class SidebarChatItem extends StatelessWidget {
   final Chat chat;
   final bool isSelected;
 
-  void _editTitle(BuildContext widgetContext, AppStateNotifier appState,
+  void _editChannel(BuildContext widgetContext, AppStateNotifier appState,
       AppLocalizations appLocals) {
     showDialog(
       context: widgetContext,
       builder: (context) {
-        final textController = TextEditingController(
+        final titleController = TextEditingController(
           text: chat.title,
+        );
+        final systemPromptController = TextEditingController(
+          text: chat.systemPrompt,
         );
         return AlertDialog(
           title: Text(appLocals.modifyChatTitle),
-          content: TextField(
-            controller: textController,
-            autofocus: true,
-            decoration: InputDecoration(
-              labelText: appLocals.newTitle,
-            ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                autofocus: true,
+                decoration: InputDecoration(
+                  labelText: appLocals.newTitle,
+                ),
+              ),
+              TextField(
+                controller: systemPromptController,
+                autofocus: false,
+                decoration: InputDecoration(
+                  labelText: appLocals.newSystemPrompt,
+                ),
+              )
+            ],
           ),
           actions: [
             TextButton(
@@ -46,7 +61,8 @@ class SidebarChatItem extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                chat.title = textController.text;
+                chat.title = titleController.text;
+                chat.systemPrompt = systemPromptController.text;
                 appState.refresh();
                 LocalData.instance.saveChat(chat);
                 context.pop();
@@ -59,7 +75,7 @@ class SidebarChatItem extends StatelessWidget {
     );
   }
 
-  void _deleteChat(BuildContext widgetContext, AppStateNotifier appState,
+  void _deleteChannel(BuildContext widgetContext, AppStateNotifier appState,
       AppLocalizations appLocals) {
     showDialog(
       context: widgetContext,
@@ -116,7 +132,7 @@ class SidebarChatItem extends StatelessWidget {
                   icon: const Icon(Icons.edit),
                   onPressed: state.isGenerating
                       ? null
-                      : () => _editTitle(context, appState, appLocals),
+                      : () => _editChannel(context, appState, appLocals),
                 ),
                 IconButton(
                   padding: EdgeInsets.zero,
@@ -125,7 +141,7 @@ class SidebarChatItem extends StatelessWidget {
                       color: isSelected ? Colors.red[300] : null),
                   onPressed: state.isGenerating
                       ? null
-                      : () => _deleteChat(context, appState, appLocals),
+                      : () => _deleteChannel(context, appState, appLocals),
                 ),
               ],
             ),

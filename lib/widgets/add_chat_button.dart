@@ -13,35 +13,89 @@ class AddChatButton extends StatelessWidget {
     final appLocals = context.appLocals;
 
     return ValueListenableBuilder(
-        valueListenable: appState,
-        builder: (context, state, _) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: state.isGenerating
-                  ? null
-                  : () async {
-                      final chat = Chat(
-                        id: const Uuid().v4(),
-                        title: appLocals.noChatTitle,
-                        messages: [],
-                        contextMessages: [],
-                      );
+      valueListenable: appState,
+      builder: (context, state, _) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: state.isGenerating
+                ? null
+                : () async {
+                    final chat = await showChatDialog(context);
+                    if (chat != null) {
                       appState.addAndSelectChat(chat);
                       await LocalData.instance.saveChat(chat);
                       await LocalData.instance
                           .saveAppSettings(appState.value.settings);
-                    },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(Icons.add),
-                  const SizedBox(width: 8),
-                  Text(appLocals.addChat),
-                ],
-              ),
+                    }
+                  },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.add),
+                const SizedBox(width: 8),
+                Text(appLocals.addChat),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
+  }
+
+  Future<Chat?> showChatDialog(BuildContext context) async {
+    String chatTitle = '';
+    String systemPrompt = '';
+
+    return showDialog<Chat>(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: const Text('设置聊天'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                onChanged: (value) {
+                  chatTitle = value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Title',
+                ),
+              ),
+              TextField(
+                onChanged: (value) {
+                  systemPrompt = value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'System Prompt',
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              child: const Text('取消'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                final chat = Chat(
+                  id: const Uuid().v4(),
+                  title: chatTitle,
+                  systemPrompt: systemPrompt,
+                  messages: [],
+                  contextMessages: [],
+                );
+                Navigator.of(dialogContext).pop(chat);
+              },
+              child: const Text('保存'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
