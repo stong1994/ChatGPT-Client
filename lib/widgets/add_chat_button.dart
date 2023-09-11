@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:open_gpt_client/extensions/context_extension.dart';
 import 'package:open_gpt_client/models/chat.dart';
 import 'package:open_gpt_client/models/local_data.dart';
@@ -46,6 +47,7 @@ class AddChatButton extends StatelessWidget {
   Future<Chat?> showChatDialog(BuildContext context) async {
     String chatTitle = '';
     String systemPrompt = '';
+    int maxContextLength = 0;
 
     return showDialog<Chat>(
       context: context,
@@ -71,6 +73,17 @@ class AddChatButton extends StatelessWidget {
                   labelText: 'System Prompt',
                 ),
               ),
+              TextField(
+                onChanged: (value) {
+                  maxContextLength = int.tryParse(value) ?? 0;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Max Context Length',
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+              ),
             ],
           ),
           actions: [
@@ -86,6 +99,7 @@ class AddChatButton extends StatelessWidget {
                   id: const Uuid().v4(),
                   title: chatTitle,
                   systemPrompt: systemPrompt,
+                  maxContextLength: maxContextLength,
                   messages: [],
                   contextMessages: [],
                 );

@@ -229,18 +229,22 @@ class Chat {
   /// The [title] property defines the title of the chat.
   String title;
 
+  /// The [systemPrompt] property defines the system prompt of the chat.
   String systemPrompt;
+
+  int maxContextLength;
 
   /// The [messages] property defines the messages of the chat.
   final List<ChatMessage> messages;
 
   /// The [contextMessages] property defines the messages of the chat that can be sent to the OpenAI API.
-  final List<ChatMessage> contextMessages;
+  List<ChatMessage> contextMessages;
 
   Chat({
     required this.id,
     required this.title,
     required this.systemPrompt,
+    required this.maxContextLength,
     required this.messages,
     required this.contextMessages,
   });
@@ -250,6 +254,7 @@ class Chat {
       id: json['id'] as String,
       title: json['title'] as String,
       systemPrompt: json['systemPrompt'] as String,
+      maxContextLength: json['maxContextLength'] as int,
       messages: (json['messages'] as List<dynamic>)
           .map((message) => ChatMessage.fromJson(message))
           .toList(),
@@ -261,13 +266,19 @@ class Chat {
 
   @override
   String toString() {
-    return 'Chat(id: $id, title: $title, system_prompt: $systemPrompt, messages: $messages)';
+    return 'Chat(id: $id, title: $title, system_prompt: $systemPrompt, maxContextLength:$maxContextLength, messages: $messages)';
   }
 
   /// The [contextMessagesJson] method returns the JSON representation of the messages that can be sent to the OpenAI API.
   List<Map<String, dynamic>> contextMessagesJson() {
     List<Map<String, dynamic>> rst =
         contextMessages.map((e) => e.toContextMessageJson()).toList();
+    if (maxContextLength > 0 && rst.length > maxContextLength) {
+      rst = rst.sublist(
+        contextMessages.length - maxContextLength,
+        contextMessages.length,
+      );
+    }
     if (systemPrompt.isNotEmpty) {
       rst.insert(0, {
         'role': MessageSenderRole.system.value,
@@ -283,6 +294,7 @@ class Chat {
       'id': id,
       'title': title,
       'systemPrompt': systemPrompt,
+      'maxContextLength': maxContextLength,
       'messages': messages.map((e) => e.toJson()).toList(),
       'contextMessages': contextMessages.map((e) => e.toJson()).toList(),
     };
@@ -300,6 +312,7 @@ class Chat {
     String? id,
     String? title,
     String? systemPrompt,
+    int? maxContextLength,
     List<ChatMessage>? messages,
     List<ChatMessage>? contextMessages,
   }) {
@@ -307,6 +320,7 @@ class Chat {
       id: id ?? this.id,
       title: title ?? this.title,
       systemPrompt: systemPrompt ?? this.systemPrompt,
+      maxContextLength: maxContextLength ?? this.maxContextLength,
       messages: messages ?? this.messages,
       contextMessages: contextMessages ?? this.contextMessages,
     );
@@ -321,12 +335,14 @@ class Chat {
         other.id == id &&
         other.title == title &&
         other.systemPrompt == systemPrompt &&
+        other.maxContextLength == maxContextLength &&
         listEquals(other.messages, messages) &&
         listEquals(other.contextMessages, contextMessages);
   }
 
   @override
   int get hashCode {
-    return Object.hash(id, title, systemPrompt, messages, contextMessages);
+    return Object.hash(
+        id, title, systemPrompt, maxContextLength, messages, contextMessages);
   }
 }

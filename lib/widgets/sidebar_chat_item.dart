@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:open_gpt_client/extensions/context_extension.dart';
 import 'package:open_gpt_client/models/chat.dart';
 import 'package:open_gpt_client/models/local_data.dart';
@@ -26,6 +27,9 @@ class SidebarChatItem extends StatelessWidget {
         final systemPromptController = TextEditingController(
           text: chat.systemPrompt,
         );
+        final maxContextLengthController = TextEditingController(
+          text: chat.maxContextLength.toString(),
+        );
         return AlertDialog(
           title: Text(appLocals.modifyChatTitle),
           content: Column(
@@ -44,7 +48,17 @@ class SidebarChatItem extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: appLocals.newSystemPrompt,
                 ),
-              )
+              ),
+              TextField(
+                controller: maxContextLengthController,
+                autofocus: false,
+                decoration: const InputDecoration(
+                  labelText: 'Max Context Length',
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+              ),
             ],
           ),
           actions: [
@@ -63,6 +77,8 @@ class SidebarChatItem extends StatelessWidget {
               onPressed: () {
                 chat.title = titleController.text;
                 chat.systemPrompt = systemPromptController.text;
+                chat.maxContextLength =
+                    int.tryParse(maxContextLengthController.text) ?? 0;
                 appState.refresh();
                 LocalData.instance.saveChat(chat);
                 context.pop();

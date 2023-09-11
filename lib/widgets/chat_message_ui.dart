@@ -109,7 +109,7 @@ class ChatMessageUIState extends State<ChatMessageUI> {
       widget.message.isLoadingResponse = false;
       widget.message.wasInError = true;
       widget.message.content =
-          '获取响应错误。\n\n可能原因：\n- 没有网络连接\n- 错误的API密钥（OpenAI）\n- 您还没有设置OpenAI付费计划\n- OpenAI的API目前处于离线状态\n\n请稍后重试。';
+          '获取响应错误。\n\n可能原因：\n- 没有网络连接\n没有正确使用VPN\n- 错误的API密钥（OpenAI）\n- 您还没有设置OpenAI付费计划\n- OpenAI的API目前处于离线状态\n\n请稍后重试，如果是非美国用户，是使用美国IP的VPN。';
       LocalData.instance.saveChat(context.appState.value.selectedChat!);
     });
   }
