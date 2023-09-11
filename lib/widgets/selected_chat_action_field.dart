@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:open_gpt_client/extensions/context_extension.dart';
 import 'package:open_gpt_client/models/api_client.dart';
 import 'package:open_gpt_client/models/chat.dart';
@@ -18,11 +19,13 @@ class SelectedChatActionField extends StatefulWidget {
 class _SelectedChatActionFieldState extends State<SelectedChatActionField> {
   late final _textController = TextEditingController();
   late final _fieldFocusNode = FocusNode();
+  late final _keyboardListenerFocusNode = FocusNode();
 
   @override
   void dispose() {
     _textController.dispose();
     _fieldFocusNode.dispose();
+    _keyboardListenerFocusNode.dispose();
     super.dispose();
   }
 
@@ -165,37 +168,56 @@ class _SelectedChatActionFieldState extends State<SelectedChatActionField> {
                 ],
               ),
               const SizedBox(height: 8),
-              TextField(
-                maxLines: 10,
-                minLines: 1,
-                maxLength: 1000,
-                controller: _textController,
-                focusNode: _fieldFocusNode,
-                enabled: currentState.selectedChat != null ||
-                    currentState.isGenerating,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(gapPadding: 12),
-                  hintText: appLocals.dasboardFieldInput,
-                  suffix: Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    child: ElevatedButton(
-                      onPressed: () => _onSend(
-                        currentState,
-                        appState,
-                        apiService,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(appLocals.send),
-                          const SizedBox(width: 8),
-                          const Icon(Icons.send, size: 15),
-                        ],
+              RawKeyboardListener(
+                focusNode: _keyboardListenerFocusNode,
+                onKey: (RawKeyEvent event) {
+                  if (event.runtimeType == RawKeyDownEvent &&
+                      event.logicalKey == LogicalKeyboardKey.enter &&
+                      event.isShiftPressed) {
+                    // Prevent the default behavior of Enter key
+                    return;
+                  }
+                  if (event.runtimeType == RawKeyDownEvent &&
+                      event.logicalKey == LogicalKeyboardKey.enter) {
+                    _onSend(currentState, appState, apiService);
+                  }
+                },
+                child: TextField(
+                  maxLines: null,
+                  minLines: 1,
+                  maxLength: 1000,
+                  keyboardType: TextInputType.multiline,
+                  textInputAction: TextInputAction.newline,
+                  controller: _textController,
+                  focusNode: _fieldFocusNode,
+                  enabled: currentState.selectedChat != null ||
+                      currentState.isGenerating,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(gapPadding: 12),
+                    hintText: appLocals.dasboardFieldInput,
+                    suffix: Container(
+                      margin: const EdgeInsets.only(right: 8),
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            _onSend(currentState, appState, apiService),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(appLocals.send),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.send, size: 15),
+                          ],
+                        ),
                       ),
                     ),
                   ),
+                  onSubmitted: (value) {
+                    if (value.trim().isNotEmpty) {
+                      _onSend(currentState, appState, apiService);
+                    }
+                  },
                 ),
-              ),
+              )
             ],
           );
         },
