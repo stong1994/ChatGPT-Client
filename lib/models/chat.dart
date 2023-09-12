@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:open_gpt_client/models/app_settings.dart';
+import 'package:open_gpt_client/utils/tokens.dart';
 import 'package:open_gpt_client/widgets/chat_message_ui.dart';
 
 /// The [MessageSenderRole] enum defines the role of the sender of a message.
@@ -52,6 +53,9 @@ class ChatMessage {
   /// The [messageType] property defines the type of the message.
   final MessageType messageType;
 
+  int? promptTokens;
+  int? completionTokens;
+
   /// The [imageMessage] property defines the image message.
   ChatImage? imageMessage;
 
@@ -66,6 +70,8 @@ class ChatMessage {
     DateTime? createdAt,
     required this.id,
     required this.content,
+    this.promptTokens,
+    this.completionTokens,
     this.messageType = MessageType.text,
     this.imageMessage,
   }) : createdAt = createdAt ?? DateTime.now();
@@ -77,6 +83,11 @@ class ChatMessage {
         (e) => e.value == json['role'],
       ),
       content: json['content'] as String,
+      promptTokens:
+          json['promptTokens'] != null ? json['promptTokens'] as int : null,
+      completionTokens: json['completionTokens'] != null
+          ? json['completionTokens'] as int
+          : null,
       wasInError: json['wasInError'] as bool? ?? false,
       createdAt: DateTime.parse(json['createdAt'] as String),
       messageType: MessageType.values.firstWhere(
@@ -92,6 +103,8 @@ class ChatMessage {
       'id': id,
       'role': senderRole.value,
       'content': content,
+      'promptTokens': promptTokens,
+      'completionTokens': completionTokens,
       'createdAt': createdAt.toIso8601String(),
       'messageType': describeEnum(messageType),
     };
@@ -126,13 +139,15 @@ class ChatMessage {
         other.wasInError == wasInError &&
         other.createdAt == createdAt &&
         other.messageType == messageType &&
+        other.promptTokens == promptTokens &&
+        other.completionTokens == completionTokens &&
         other.imageMessage == imageMessage;
   }
 
   @override
   int get hashCode {
     return Object.hash(senderRole, content, id, wasInError, createdAt,
-        messageType, imageMessage);
+        messageType, promptTokens, completionTokens, imageMessage);
   }
 }
 
@@ -275,9 +290,12 @@ class Chat {
         contextMessages.map((e) => e.toContextMessageJson()).toList();
     if (maxContextLength > 0 && rst.length > maxContextLength) {
       rst = rst.sublist(
-        contextMessages.length - maxContextLength,
-        contextMessages.length,
+        rst.length - maxContextLength,
+        rst.length,
       );
+      // update context
+      contextMessages = contextMessages.sublist(
+          contextMessages.length - maxContextLength, contextMessages.length);
     }
     if (systemPrompt.isNotEmpty) {
       rst.insert(0, {
@@ -286,6 +304,15 @@ class Chat {
       });
     }
     return rst;
+  }
+
+  /// The [promptTokenCnt] method returns the count of prompt tokens
+  int promptTokenCnt() {
+    int cnt = 0;
+    for (var message in contextMessages) {
+      cnt += tokenCount(message.content, "gpt-3.5-turbo");
+    }
+    return cnt;
   }
 
   /// The [toJson] method returns the JSON representation of the chat that can be saved in the local storage.

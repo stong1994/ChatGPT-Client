@@ -12,6 +12,7 @@ import 'package:open_gpt_client/models/local_data.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
+import 'package:open_gpt_client/utils/tokens.dart';
 
 class ChatMessageUI extends StatefulWidget {
   const ChatMessageUI({
@@ -307,7 +308,8 @@ class ChatMessageUIState extends State<ChatMessageUI> {
             ] else ...[
               const _CustomMarkDown(content: '图片无法使用'),
             ]
-          ]
+          ],
+          _TokenCount(chatMessage: widget.message),
         ],
       ),
     );
@@ -489,6 +491,35 @@ class _CustomMarkDown extends StatelessWidget {
           ))
         ],
       ),
+    );
+  }
+}
+
+class _TokenCount extends StatelessWidget {
+  const _TokenCount({
+    Key? key,
+    required this.chatMessage,
+  }) : super(key: key);
+
+  final ChatMessage chatMessage;
+
+  @override
+  Widget build(BuildContext context) {
+    if (chatMessage.fromMe) {
+      return Container();
+    }
+    var price =
+        tokenValue(chatMessage.promptTokens, chatMessage.completionTokens);
+    if (price == null || price == 0) {
+      return Container();
+    }
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+            "prompt tokens:${chatMessage.promptTokens}, completion tokens:${chatMessage.completionTokens}, price:\$${price}",
+            style: TextStyle(fontFamily: 'monospace', color: Colors.green)),
+      ],
     );
   }
 }

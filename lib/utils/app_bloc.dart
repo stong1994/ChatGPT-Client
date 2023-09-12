@@ -3,6 +3,7 @@ import 'package:open_gpt_client/models/api_client.dart';
 import 'package:open_gpt_client/models/app_settings.dart';
 import 'package:open_gpt_client/models/chat.dart';
 import 'package:open_gpt_client/models/local_data.dart';
+import 'package:open_gpt_client/utils/tokens.dart';
 
 ///
 class AppState {
@@ -10,7 +11,8 @@ class AppState {
   AppSettings settings;
   Chat? get selectedChat {
     final selectedChatId = settings.selectedChatId;
-    if (selectedChatId != null) {
+    if (selectedChatId != null && chats.isNotEmpty) {
+      // todo
       return chats.firstWhere((e) => e.id == selectedChatId);
     }
 
@@ -81,6 +83,8 @@ class AppStateNotifier extends ValueNotifier<AppState> {
   }
 
   void addMessageToContext(ChatMessage message) {
+    message.promptTokens = value.selectedChat?.promptTokenCnt();
+    message.completionTokens = tokenCount(message.content, "gpt-3.5-turbo");
     value.selectedChat!.contextMessages.add(message);
     LocalData.instance.saveChat(value.selectedChat!);
     notifyListeners();
