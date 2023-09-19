@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/widgets/chat_message_ui.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/widgets/chat_message_ui.dart';
 
 class SelectedChatBody extends StatelessWidget {
   const SelectedChatBody({super.key});

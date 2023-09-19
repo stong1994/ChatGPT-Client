@@ -1,15 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/utils/constants.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VersionNewsDialog extends StatelessWidget {
   const VersionNewsDialog({Key? key}) : super(key: key);
 
   void _openGithubIssue() async {
-    final uri =
-        Uri.parse('https://github.com/dariowskii/open_gpt_client/issues/3');
+    final uri = Uri.parse('https://github.com/dariowskii/open_chat/issues/3');
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }

@@ -46,6 +46,6 @@ To contribute you need to follow these steps:
 
 ## Contributors
 
-<a href="https://github.com/dariowskii/open_gpt_client/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=dariowskii/open_gpt_client" />
+<a href="https://github.com/dariowskii/open_chat/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dariowskii/open_chat" />
 </a>

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:open_gpt_client/models/api_client.dart';
-import 'package:open_gpt_client/utils/app_bloc.dart';
+import 'package:open_chat/models/api_client.dart';
+import 'package:open_chat/utils/app_bloc.dart';
 
 /// Extensions for [BuildContext].
 extension ContextExtension on BuildContext {

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:markdown_widget/markdown_widget.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/models/chat.dart';
-import 'package:open_gpt_client/models/local_data.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/models/chat.dart';
+import 'package:open_chat/models/local_data.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
-import 'package:open_gpt_client/utils/tokens.dart';
+import 'package:open_chat/utils/tokens.dart';
 
 class ChatMessageUI extends StatefulWidget {
   const ChatMessageUI({

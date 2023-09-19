@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:open_gpt_client/models/app_settings.dart';
-import 'package:open_gpt_client/models/chat.dart';
-import 'package:open_gpt_client/models/local_data.dart';
+import 'package:open_chat/models/app_settings.dart';
+import 'package:open_chat/models/chat.dart';
+import 'package:open_chat/models/local_data.dart';
 import 'package:http/http.dart' as http;
-import 'package:open_gpt_client/utils/constants.dart';
-import 'package:open_gpt_client/utils/utils.dart';
+import 'package:open_chat/utils/constants.dart';
+import 'package:open_chat/utils/utils.dart';
 
 /// The [ApiService] interface defines the contract for the [ApiClient].
 abstract class ApiService {
@@ -122,7 +122,7 @@ class ApiClient implements ApiService {
     try {
       final response = await http.get(
         Uri.parse(
-          'https://api.github.com/repos/dariowskii/open_gpt_client/releases/latest',
+          'https://api.github.com/repos/dariowskii/open_chat/releases/latest',
         ),
         headers: {
           'Accept': 'application/vnd.github+json',

@@ -11,7 +11,7 @@ class CheckUpdateButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () async {
           final uri = Uri.parse(
-              'https://github.com/dariowskii/open_gpt_client/releases/latest');
+              'https://github.com/dariowskii/open_chat/releases/latest');
           if (await canLaunchUrl(uri)) {
             await launchUrl(uri);
           }

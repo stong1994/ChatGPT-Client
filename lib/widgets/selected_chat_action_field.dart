@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/models/api_client.dart';
-import 'package:open_gpt_client/models/chat.dart';
-import 'package:open_gpt_client/models/local_data.dart';
-import 'package:open_gpt_client/utils/app_bloc.dart';
-import 'package:open_gpt_client/widgets/chat_message_ui.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/models/api_client.dart';
+import 'package:open_chat/models/chat.dart';
+import 'package:open_chat/models/local_data.dart';
+import 'package:open_chat/utils/app_bloc.dart';
+import 'package:open_chat/widgets/chat_message_ui.dart';
 import 'package:uuid/uuid.dart';
 
 class SelectedChatActionField extends StatefulWidget {

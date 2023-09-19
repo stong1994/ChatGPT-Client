@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/screens/desktop/desktop_home_screen.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/screens/desktop/desktop_home_screen.dart';
 
 /// The home screen entry point.
 class HomeScreen extends StatelessWidget {

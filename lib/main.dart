@@ -2,18 +2,18 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/models/api_client.dart';
-import 'package:open_gpt_client/models/app_settings.dart';
-import 'package:open_gpt_client/models/local_data.dart';
+import 'package:open_chat/models/api_client.dart';
+import 'package:open_chat/models/app_settings.dart';
+import 'package:open_chat/models/local_data.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:open_gpt_client/screens/on_boarding_screen.dart';
-import 'package:open_gpt_client/screens/welcome_lock_screen.dart';
-import 'package:open_gpt_client/utils/app_bloc.dart';
+import 'package:open_chat/screens/on_boarding_screen.dart';
+import 'package:open_chat/screens/welcome_lock_screen.dart';
+import 'package:open_chat/utils/app_bloc.dart';
 import 'package:window_size/window_size.dart';
 
 void _desktopSetup() {
   if (!Platform.isAndroid || !Platform.isIOS) {
-    setWindowTitle('Open GPT Client');
+    setWindowTitle('OpenChat');
     setWindowMinSize(const Size(1000, 700));
     setWindowMaxSize(Size.infinite);
   }
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Open GPT Client',
+      title: 'OpenChat',
       debugShowCheckedModeBanner: kDebugMode,
       theme: ThemeData.dark(useMaterial3: true),
       home: home,

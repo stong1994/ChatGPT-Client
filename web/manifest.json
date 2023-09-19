@@ -1,6 +1,6 @@
 {
-    "name": "open_gpt_client",
-    "short_name": "open_gpt_client",
+    "name": "open_chat",
+    "short_name": "open_chat",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

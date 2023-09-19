@@ -1,4 +1,4 @@
-name: open_gpt_client
+name: open_chat
 description: An open-source client to connect with OpenAI API's.
 
 publish_to: 'none' 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
+import 'package:open_chat/extensions/context_extension.dart';
 
 class SelectedChatHeader extends StatelessWidget {
   const SelectedChatHeader({super.key});

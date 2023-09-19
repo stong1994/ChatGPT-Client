@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/models/api_client.dart';
-import 'package:open_gpt_client/models/app_settings.dart';
-import 'package:open_gpt_client/models/chat.dart';
-import 'package:open_gpt_client/models/local_data.dart';
-import 'package:open_gpt_client/utils/tokens.dart';
+import 'package:open_chat/models/api_client.dart';
+import 'package:open_chat/models/app_settings.dart';
+import 'package:open_chat/models/chat.dart';
+import 'package:open_chat/models/local_data.dart';
+import 'package:open_chat/utils/tokens.dart';
 
 ///
 class AppState {

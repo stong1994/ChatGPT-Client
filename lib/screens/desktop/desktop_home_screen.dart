@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/models/api_client.dart';
-import 'package:open_gpt_client/models/local_data.dart';
-import 'package:open_gpt_client/screens/desktop/sidebar_home.dart';
-import 'package:open_gpt_client/utils/constants.dart';
-import 'package:open_gpt_client/widgets/ask_api_key_alert_dialog.dart';
-import 'package:open_gpt_client/widgets/check_update_button.dart';
-import 'package:open_gpt_client/widgets/selected_chat_action_field.dart';
-import 'package:open_gpt_client/widgets/selected_chat_body.dart';
-import 'package:open_gpt_client/widgets/selected_chat_header.dart';
-import 'package:open_gpt_client/widgets/version_news_dialog.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/models/api_client.dart';
+import 'package:open_chat/models/local_data.dart';
+import 'package:open_chat/screens/desktop/sidebar_home.dart';
+import 'package:open_chat/utils/constants.dart';
+import 'package:open_chat/widgets/ask_api_key_alert_dialog.dart';
+import 'package:open_chat/widgets/check_update_button.dart';
+import 'package:open_chat/widgets/selected_chat_action_field.dart';
+import 'package:open_chat/widgets/selected_chat_body.dart';
+import 'package:open_chat/widgets/selected_chat_header.dart';
+import 'package:open_chat/widgets/version_news_dialog.dart';
 
 /// The home screen for desktop.
 class DesktopHomeScreen extends StatefulWidget {

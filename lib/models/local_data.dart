@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:open_gpt_client/models/app_settings.dart';
-import 'package:open_gpt_client/models/chat.dart';
-import 'package:open_gpt_client/utils/app_bloc.dart';
-import 'package:open_gpt_client/utils/constants.dart';
-import 'package:open_gpt_client/utils/exceptions.dart';
-import 'package:open_gpt_client/utils/utils.dart';
+import 'package:open_chat/models/app_settings.dart';
+import 'package:open_chat/models/chat.dart';
+import 'package:open_chat/utils/app_bloc.dart';
+import 'package:open_chat/utils/constants.dart';
+import 'package:open_chat/utils/exceptions.dart';
+import 'package:open_chat/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

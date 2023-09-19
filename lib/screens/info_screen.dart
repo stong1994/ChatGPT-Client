@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/utils/constants.dart';
-import 'package:open_gpt_client/widgets/support_me_card.dart';
+import 'package:open_chat/utils/constants.dart';
+import 'package:open_chat/widgets/support_me_card.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// The info screen.

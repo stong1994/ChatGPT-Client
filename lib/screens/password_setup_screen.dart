@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/models/local_data.dart';
-import 'package:open_gpt_client/screens/home_screen.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/models/local_data.dart';
+import 'package:open_chat/screens/home_screen.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,4 +1,4 @@
-package it.dariovarriale.open_gpt_client
+package it.dariovarriale.open_chat
 
 import io.flutter.embedding.android.FlutterActivity
 

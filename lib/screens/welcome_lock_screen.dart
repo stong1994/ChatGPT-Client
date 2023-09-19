@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/models/local_data.dart';
-import 'package:open_gpt_client/screens/home_screen.dart';
-import 'package:open_gpt_client/screens/on_boarding_screen.dart';
-import 'package:open_gpt_client/utils/exceptions.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/models/local_data.dart';
+import 'package:open_chat/screens/home_screen.dart';
+import 'package:open_chat/screens/on_boarding_screen.dart';
+import 'package:open_chat/utils/exceptions.dart';
 
 /// The welcome lock screen.
 class WelcomeLockScreen extends StatefulWidget {
@@ -87,7 +87,7 @@ class _WelcomeLockScreenState extends State<WelcomeLockScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Open GPT Client',
+                'OpenChat',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -179,6 +179,7 @@ class _WelcomeLockScreenState extends State<WelcomeLockScreen> {
                 ),
               ),
               if (_isDecrypting) ...[
+                // todo
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

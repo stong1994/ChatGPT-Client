@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/screens/info_screen.dart';
-import 'package:open_gpt_client/screens/settings_screen.dart';
-import 'package:open_gpt_client/widgets/add_chat_button.dart';
-import 'package:open_gpt_client/widgets/sidebar_chat_item.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/screens/info_screen.dart';
+import 'package:open_chat/screens/settings_screen.dart';
+import 'package:open_chat/widgets/add_chat_button.dart';
+import 'package:open_chat/widgets/sidebar_chat_item.dart';
 
 /// The home sidebar for desktop.
 class SidebarHome extends StatelessWidget {
@@ -62,16 +62,20 @@ class SidebarHome extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.settings),
                   title: Text(appLocals.settings),
-                  onTap: state.isGenerating ? null : () {
-                    context.push(const SettingsScreen());
-                  },
+                  onTap: state.isGenerating
+                      ? null
+                      : () {
+                          context.push(const SettingsScreen());
+                        },
                 ),
                 ListTile(
                   leading: const Icon(Icons.info),
                   title: Text(appLocals.about),
-                  onTap: state.isGenerating ? null : () {
-                    context.push(const InfoScreen());
-                  },
+                  onTap: state.isGenerating
+                      ? null
+                      : () {
+                          context.push(const InfoScreen());
+                        },
                 ),
               ],
             );

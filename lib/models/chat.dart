@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:open_gpt_client/models/app_settings.dart';
-import 'package:open_gpt_client/utils/tokens.dart';
-import 'package:open_gpt_client/widgets/chat_message_ui.dart';
+import 'package:open_chat/models/app_settings.dart';
+import 'package:open_chat/utils/tokens.dart';
+import 'package:open_chat/widgets/chat_message_ui.dart';
 
 /// The [MessageSenderRole] enum defines the role of the sender of a message.
 enum MessageSenderRole {

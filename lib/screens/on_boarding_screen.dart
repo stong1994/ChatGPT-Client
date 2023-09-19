@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:open_gpt_client/extensions/context_extension.dart';
-import 'package:open_gpt_client/screens/password_setup_screen.dart';
+import 'package:open_chat/extensions/context_extension.dart';
+import 'package:open_chat/screens/password_setup_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 /// The on boarding screen.
