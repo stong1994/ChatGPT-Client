@@ -1,27 +1,15 @@
 # OpenChat
 
-Questo è un client open source per poter utilizzare le API di **OpenAI**, in primis con il modello **GPT-3.5** per usare la chat e **DALL-E** per generare immagini.
+OpenChat是基于[open_gpt_client](https://github.com/dariowskii/open_gpt_client)开发的，集成了ChatGPT能力的客户端。
 
-## Screenshots
-
-Utilizzo chat:
+## 截图
 
 ![Chat](.github_assets/chat.gif)
 
-Generazione immagini:
 
-![Image](.github_assets/image.png)
-
-## Come funziona
-
-Per utilizzare il client è necessario essere in possesso di una chiave API di OpenAI.
-
-Per ottenere una chiave API è necessario creare un account [qui](https://platform.openai.com/account/api-keys).
-
-## Privacy
-
-Il client non salva alcuna informazione riguardante l'utente, né la chiave API, né il testo scritto.
-
-I dati salvati in locale vengono criptati con algoritmo **AES-256-CTR**.
-
-Made with ❤️ by [**Dario Varriale**](https://www.linkedin.com/in/dario-varriale/)
+## 功能
+1. 自定义系统提示（system prompt）
+2. 自定义上下文长度
+3. 管理上下文
+4. 可选模型（todo）
+5. 生成图片（todo）
