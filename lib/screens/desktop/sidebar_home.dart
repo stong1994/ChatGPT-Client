@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:open_chat/extensions/context_extension.dart';
 import 'package:open_chat/screens/info_screen.dart';
 import 'package:open_chat/screens/settings_screen.dart';
-import 'package:open_chat/widgets/add_chat_button.dart';
+import 'package:open_chat/widgets/add_channel_button.dart';
 import 'package:open_chat/widgets/sidebar_chat_item.dart';
 
 /// The home sidebar for desktop.
