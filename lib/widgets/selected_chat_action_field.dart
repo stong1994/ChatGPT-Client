@@ -177,10 +177,10 @@ class _SelectedChatActionFieldState extends State<SelectedChatActionField> {
                     // Prevent the default behavior of Enter key
                     return;
                   }
-                  if (event.runtimeType == RawKeyDownEvent &&
-                      event.logicalKey == LogicalKeyboardKey.enter) {
-                    _onSend(currentState, appState, apiService);
-                  }
+                  // if (event.runtimeType == RawKeyDownEvent &&
+                  //     event.logicalKey == LogicalKeyboardKey.enter) {
+                  //   _onSend(currentState, appState, apiService);
+                  // }
                 },
                 child: TextField(
                   maxLines: null,
